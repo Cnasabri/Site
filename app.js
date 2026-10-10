@@ -18,9 +18,7 @@
   ];
   const rooms = [
     {id:'entrance',name:'Entrance',points:'411,350 466,350 466,463 641,463 641,575 470,575 470,523 411,523',description:'The first impression: art, timber and sculptural details.'},
-    {id:'living-room',name:'Living room',points:'797,238 976,238 976,469 797,469',description:'The main seating area, framed by the city outlook.'},
-    {id:'dining-room',name:'Dining room',points:'577,108 941,108 941,143 976,143 976,236 577,236',description:'A generous dining table beside the panoramic windows.'},
-    {id:'tv-room',name:'TV room',points:'577,240 794,240 794,467 577,467',description:'A relaxed seating area with integrated media cabinetry.'},
+    {id:'living-room',name:'Living, Dining & TV Area',points:'577,108 941,108 941,143 976,143 976,469 577,469',description:'One connected space for living, dining and relaxed evenings.'},
     {id:'kitchen',name:'Kitchen',points:'644,470 941,470 941,522 976,522 976,666 663,666 644,615',description:'A sculptural island and a wall of integrated appliances.'},
     {id:'master-bedroom',name:'Master bedroom',points:'32,153 384,153 384,348 335,348 335,409 32,409',description:'A private bedroom with an adjoining dressing space.'},
     {id:'master-ensuite',name:'Master en suite',points:'32,414 226,414 226,442 295,442 295,520 180,520 180,502 131,502 131,520 32,520',description:'Stone surfaces, glass partitions and warm illumination.'},
@@ -230,7 +228,7 @@
     if(index<0||index>=images.length)return;
     currentImage=index;const request=++imageRequest;
     const img=$('#lightbox-image');
-    const incoming=new Image();incoming.src=images[index].src;
+    const incoming=new Image();incoming.src=window.ALBUM_DETAILS?.[index]?.fullSrc || images[index].src;
     $('#lightbox-caption').textContent=labels[index];
     $('#lightbox-count').textContent=String(index+1).padStart(2,'0')+' / '+images.length;
     $('#lightbox-prev').disabled=index===0;$('#lightbox-next').disabled=index===images.length-1;
