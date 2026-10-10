@@ -77,16 +77,9 @@
   $('#outlook-photo').innerHTML = photo(5,'frame-wide');
   $('#chapters').innerHTML = chapters.map(chapter => `<section class="chapter" id="${chapter.id}" aria-labelledby="title-${chapter.id}"><div class="section-label reveal"><span>CHAPTER ${chapter.number} — THE SPACES</span><span>UNIT 02 / KELVAN iD</span></div><div class="chapter-heading"><h2 class="chapter-title reveal" id="title-${chapter.id}">${chapter.name.replace(' ','<br>')}</h2><p class="body-copy reveal">${chapter.description}</p></div><div class="chapter-meta reveal"><span>${chapter.note}</span><span>${chapter.range[1]-chapter.range[0]+1} PHOTOGRAPHS</span></div><div class="photo-grid">${chapterPhotos(chapter)}</div><div class="chapter-end reveal"><span>END OF CHAPTER ${chapter.number}</span><a href="#${chapter.next}">${chapter.next === 'closing' ? 'A final word' : 'Next: '+chapters.find(c=>c.id===chapter.next).name}<span>↓</span></a></div></section>`).join('');
 
-  // Scroll reveals run once; persistent motion uses a single animation frame.
-  let revealObserver;
+  // The main album's reveal timing lives in experience.js; dialog content is immediate.
   function observeReveals(root=document) {
-    if(!('IntersectionObserver' in window) || reducedMotion.matches) {
-      $$('.reveal',root).forEach(el=>el.classList.add('in-view')); return;
-    }
-    if(!revealObserver) revealObserver = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in-view');revealObserver.unobserve(entry.target);}});
-    },{threshold:.06,rootMargin:'0px 0px -25px 0px'});
-    $$('.reveal',root).forEach(el=>revealObserver.observe(el));
+    if(root!==document || reducedMotion.matches) $$('.reveal',root).forEach(el=>el.classList.add('in-view'));
   }
   observeReveals();
   $$('.dock-card').forEach((card,i)=>card.style.setProperty('--card-index',i));
