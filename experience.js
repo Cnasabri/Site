@@ -84,15 +84,17 @@
   new MutationObserver(refresh).observe(image,{attributes:true,attributeFilter:['src']});
   const ghost=(from,to,src)=>{const copy=document.createElement('img');copy.className='image-morph';copy.src=src;viewer.append(copy);return animate(copy,[{left:from.left+'px',top:from.top+'px',width:from.width+'px',height:from.height+'px'},{left:to.left+'px',top:to.top+'px',width:to.width+'px',height:to.height+'px'}],700).finally(()=>copy.remove());};
   async function closeViewer(){
-    if(busy||!viewer.open)return;busy=true;opening++;setZoom(false);const from=image.getBoundingClientRect(),to=origin?.getBoundingClientRect();image.style.visibility='hidden';viewer.classList.add('viewer-closing');
-    if(to&&to.bottom>0&&to.top<innerHeight)await ghost(from,to,image.src);else await animate(wrap,[{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(.96)'}],350);
-    viewer.close();image.style.visibility='';viewer.classList.remove('viewer-closing');window.scrollTo({top:originScroll,behavior:'instant'});origin?.closest('[data-image]')?.focus({preventScroll:true});busy=false;
+    if(busy||!viewer.open)return;busy=true;opening++;
+    $$('.image-morph',viewer).forEach(copy=>{copy.getAnimations().forEach(animation=>animation.cancel());copy.remove();});
+    image.style.visibility='';viewer.classList.add('viewer-fading');
+    await animate(viewer,[{opacity:1},{opacity:0}],320);
+    viewer.close();viewer.classList.remove('viewer-fading');window.scrollTo({top:originScroll,behavior:'instant'});origin?.closest('[data-image]')?.focus({preventScroll:true});busy=false;
   }
   document.addEventListener('click',e=>{
     if(e.target.closest('[data-close="lightbox"]')){e.preventDefault();e.stopImmediatePropagation();closeViewer();return;}
-    if(e.target===image&&viewer.open){e.preventDefault();e.stopImmediatePropagation();setZoom(!zoomed);return;}
+    if(e.target===image&&viewer.open){e.preventDefault();e.stopImmediatePropagation();if(!busy)setZoom(!zoomed);return;}
     const trigger=e.target.closest('[data-image]');if(trigger){origin=$('img',trigger);originScroll=scrollY;image.src=origin.currentSrc;image.alt=origin.alt;const from=origin.getBoundingClientRect(),request=++opening;
-      requestAnimationFrame(()=>{if(request!==opening)return;refresh();image.style.visibility='hidden';requestAnimationFrame(async()=>{await ghost(from,image.getBoundingClientRect(),origin.currentSrc);if(request===opening)image.style.visibility='';});});}
+      requestAnimationFrame(()=>{if(request!==opening)return;refresh();image.style.visibility='hidden';requestAnimationFrame(async()=>{if(request!==opening||!viewer.open)return;await ghost(from,image.getBoundingClientRect(),origin.currentSrc);if(request===opening)image.style.visibility='';});});}
   },true);
   viewer.addEventListener('cancel',e=>{e.preventDefault();closeViewer();});
   viewer.addEventListener('keydown',e=>{if(e.target===image&&(e.key==='Enter'||e.key===' ')){e.preventDefault();setZoom(!zoomed);}if(e.key==='ArrowLeft'||e.key==='ArrowRight')setZoom(false);});
