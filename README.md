@@ -1,5 +1,9 @@
 # Unit 02 — digital residence album
 
+## GitHub Pages
+
+In the repository's **Settings → Pages**, select **Deploy from a branch**, choose **main** and **/ (root)**, then save. `.nojekyll` makes GitHub serve the static album directly. After GitHub completes deployment, the expected site address is https://cnasabri.github.io/Site/. GitHub Pages activation has not been verified from the cloud environment because its network proxy blocks `api.github.com`.
+
 A standalone English album built with HTML, CSS and JavaScript. No framework, package installation, external font service, API key or build step is required. Open `index.html` directly, or serve this directory:
 
 ```sh
