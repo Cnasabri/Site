@@ -32,12 +32,12 @@
     "height": 1692
   },
   {
-    "src": "assets/p1-05-89.webp",
+    "src": "assets/1-5.png",
     "part": 1,
     "page": 5,
-    "text": "Spaces:\nEntrance\nLiving Room\nDining Room\nTV Room\nKitchen\nChildren\u2019s Room\nMaster Bedroom\nGuest Room\nFloor Number:42\nNumber of Rooms: 3\nStatus: Finished\nArea: 200 m2",
-    "width": 2200,
-    "height": 1912
+    "text": "Spaces:\nEntrance\nLiving Room\nDining Room\nTV Room\nKitchen\nChildren’s Room\nMaster Bedroom\nGuest Room\nFloor Number:42\nNumber of Rooms: 3\nStatus: Finished\nArea: 200 m2",
+    "width": 2586,
+    "height": 2207
   },
   {
     "src": "assets/p1-07-171.webp",
@@ -336,12 +336,12 @@
     "height": 2200
   },
   {
-    "src": "assets/p3-03-71.webp",
+    "src": "assets/safe-closed.webp",
     "part": 3,
     "page": 3,
     "text": "Master Bedroom - View08",
-    "width": 2200,
-    "height": 1467
+    "width": 1536,
+    "height": 1024
   },
   {
     "src": "assets/p3-04-85.webp",
@@ -451,7 +451,7 @@
     "src": "assets/p3-12-241.webp",
     "part": 3,
     "page": 12,
-    "text": "Children\u2019s Room - View01",
+    "text": "Children’s Room - View01",
     "width": 2200,
     "height": 1467
   }

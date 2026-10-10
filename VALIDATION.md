@@ -4,7 +4,7 @@ Verified in Chromium via a local HTTP server:
 
 - All 57 source images occur exactly once in the main document, in inventory order 0–56.
 - Nine original brand logos render.
-- Seven interactive-plan zones render, with Living, Dining & TV Area combined and the original PNG plan.
+- Seven interactive-plan zones render, with Living, Dining & TV Area combined and the owner-supplied transparent replacement PNG.
 - Plan hover updates the selected zone and its description; touch selects on the first tap and navigates on the second.
 - Four compact hero tabs expand upward within their own columns, switch one at a time, and collapse without opening a dialog. Rapid repeated selections retain one open card.
 - Original-resolution full-screen photographs load. Spatial views have key plans; the tested master/guest furniture close-ups do not. Clicking inside the viewer toggles a second zoom level without closing it. × and Escape fade the whole viewer and backdrop out together and restore the original scroll position. Desktop and mobile checks confirm the zoomed image stays stationary during closing, no return morph is created, reopening restores full opacity, an early close cancels the opening morph, and reduced-motion mode closes immediately without browser errors.
@@ -26,4 +26,4 @@ Direct `file://` navigation could not be tested because this cloud browser block
 
 The static source is maintained on GitHub main. GitHub Pages activation is separate and has not been verified.
 
-Pending assets: the replacement 2586×2207 plan PNG and the edited dressing-room photograph with the safe closed were visible inline in chat but unavailable as attached files. Exact replacement and alignment have not been performed; the original PDF-derived assets remain active.
+The supplied replacement plan (2586×2207) is active in the main plan, hero thumbnail and viewer. Seven polygons were recalibrated to its matching SVG aspect ratio. Image 42 now uses the supplied closed-safe photograph, with responsive previews and its original 1536×1024 PNG in the viewer. Both files were retrieved from the owner’s GitHub uploads; no asset replacement remains pending.

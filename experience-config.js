@@ -2,7 +2,7 @@
    Only Miele is verified from the original equipment photograph. */
 window.RESIDENCE_CONFIG = {
   contact: {phone:'09015388817',tel:'+989015388817',email:'info@kelvan.design'},
-  plan: 'assets/unit-plan.png',
+  plan: 'assets/1-5.png',
   products: {
     10: [
       {x:65,y:56,title:'Sculptural armchair',text:'Soft leather. A sculptural silhouette.',brand:'Lazzoni',temporary:true},
